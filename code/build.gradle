@@ -1,0 +1,66 @@
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = project.hasProperty('env') ? project.env : 'test'
+    project.ext.set 'environment', environment
+}
+
+apply from: 'environment.gradle'
+
+subprojects {
+
+    ext {
+        springBootVersion = '1.2.7.RELEASE'
+    }
+
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion")
+        }
+
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    dependencies {
+        testCompile("junit:junit")
+    }
+
+
+    compileJava.dependsOn setUpEnvironmentConfiguration
+    sourceSets {
+        main {
+            resources {
+                srcDir "src/main/environment/${environment}/resources"
+            }
+        }
+    }
+    if (environment == 'test') {
+        apply plugin: 'findbugs'
+        findbugs {
+            ignoreFailures = true
+        }
+
+        apply plugin: 'checkstyle'
+        checkstyle {
+            ignoreFailures = true
+            configFile = rootProject.file('../codequality/checkstyle.xml')
+        }
+    }
+    if (environment == 'dev') {
+        gradle.startParameter.excludedTaskNames += "test" // exclude testing
+    }
+
+}

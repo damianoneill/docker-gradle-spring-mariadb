@@ -1,0 +1,5 @@
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-security:$springBootVersion")
+    compile("org.springframework.boot:spring-boot-starter-remote-shell:$springBootVersion")
+}

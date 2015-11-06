@@ -1,0 +1,15 @@
+// http://blog.codelicious.de/gradle-and-different-environments/
+task setUpEnvironmentConfiguration << {
+
+    def availableEnvironments = ['test', 'dev', 'prod']
+    def environment = project.hasProperty('environment') ? environment : 'test'
+
+    if (!availableEnvironments.contains(environment)) {
+        def message = "Target environment '${environment}' not allowed. Please use one of the following: " +
+                availableEnvironments.join(", ")
+        throw new TaskExecutionException(setUpEnvironmentConfiguration, new ResourceException(message))
+    }
+
+    println "Target environment used: '${environment}'"
+
+}
