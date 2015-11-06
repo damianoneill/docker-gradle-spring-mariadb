@@ -5,6 +5,17 @@ Containers running on a single machine all share the same operating system kerne
 
 Docker containers are based on open standards allowing containers to run on all major Linux distributions.
 
+## Docker Terminology
+
+* Docker engine: The process running on your production machine that sits between your running Docker application and the underlying operating system and hardware.
+* Dockerfile: A text file that contains the instructions (or commands) used to build a Docker image.
+* Docker image: The result of building a Dockerfile and executing the Dockerfile's commands. It is constructed from a root operating system, installed applications, and commands executed in such a way that it can run your application. A Docker image serves as the basis for Docker containers and is the static template from which they are created.
+* Docker container: A runtime instance of a Docker image. Whereas the Docker image is like a template (built from a Dockerfile that contains the correct operating system, applications, and commands used to build the image), the container is an actual running instance of that image.
+* Docker host: A physical or virtual machine that runs the Docker engine to host your Docker container's DockerHub.
+* DockerHub: The repository that hosts Docker images. Think of a DockerHub being to Docker images what GitHub is to Git repositories: a central location for hosting and serving up Docker images.
+
+See [here](http://www.javaworld.com/article/3000781/development-tools/open-source-java-projects-docker.html) for a good high level overview on Docker with focus on Java Development. 
+
 ## Docker Setup
 The default size for a virtualbox created through docker-machine is not large enough for simulating a small number 
 of Java machines, this can easily be modified as below:

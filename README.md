@@ -2,6 +2,8 @@
 
 This project demonstrates docker as a deployment environment for a multi-process java db project.
 
+![Alt text](./docs/demo.png?raw=true "Demo Architecture")
+
 It uses a variety of gradle plugins for e.g.
 
 * Fingbugs - The FindBugs plugin performs quality checks on your project's Java source files using FindBugs and generates reports from these checks.
