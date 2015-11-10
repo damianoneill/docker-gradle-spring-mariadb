@@ -20,8 +20,8 @@ See [here](http://www.javaworld.com/article/3000781/development-tools/open-sourc
 The default size for a virtualbox created through docker-machine is not large enough for simulating a small number 
 of Java machines, this can easily be modified as below:
 
-    docker-machine create --virtualbox-disk-size 40000 --driver virtualbox default 
-    
+    docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virtualbox-memory "3096" --virtualbox-disk-size "40000" default
+
 Remember to learn the new settings after making this change.
 
     eval "$(docker-machine env default)" 
