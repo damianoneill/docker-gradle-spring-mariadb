@@ -94,6 +94,15 @@ Accessing the integrated Java Shell [crash](http://docs.spring.io/spring-boot/do
     $ ssh -p 2000 admin@<DOCKER_HOST>
 
 
+## Extras
+A Docker Compose configuration is included for spinning up a sonarqube environment, this can be found here [sonar-docker-compose.yml](./codequality/sonar-docker-compose.yml)
+
+This persists to a docker linked mariadb instance.  Note the /var/lib/mysql directory is not a VOLUME in the docker config as their are challenges in permissions on OSX.  Therefore if you rm the container you loose the previously capture sonar data.
+
+The main gradle file includes a sonar runner definition and configuration to use the docker environment.  This can be invoked in the code directory as follows:
+
+    $ gradle sonarRunner
+
 ## Technology Uses
 This section provides an overview on each of the main technologies used: 
 
