@@ -61,4 +61,7 @@ To access the container via Bash, we will run this command:
 Now we can use normal Linux commands like cd, ls, etc. We will have root privileges. We can even install software, for example:
 
     apt-get update; apt-get install vim
-    
+
+To get the ip address of all running docker containers 
+
+    docker inspect --format "{{ .NetworkSettings.IPAddress }}" $(docker ps -q)
